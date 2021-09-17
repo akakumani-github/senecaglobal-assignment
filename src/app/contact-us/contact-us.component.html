@@ -1,0 +1,136 @@
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-header bg-dark text-white">Contact Us</div>
+        <div class="card-body">
+          <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+            <div class="form-group row">
+              <mat-form-field
+                class="example-form-field col-sm-6"
+                [floatLabel]="'always'"
+              >
+                <mat-label> First Name</mat-label>
+                <input
+                  matInput
+                  size="5"
+                  id="firstName"
+                  name="firstName"
+                  formControlName="firstName"
+                />
+                <mat-error *ngIf="formFields.firstName.hasError('required')">
+                  First Name is required
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="form-group row">
+              <mat-form-field
+                class="example-form-field col-sm-6"
+                [floatLabel]="'always'"
+              >
+                <mat-label> Last Name</mat-label>
+                <input
+                  matInput
+                  size="5"
+                  id="lastName"
+                  name="lastName"
+                  formControlName="lastName"
+                />
+                <mat-error *ngIf="formFields.lastName.hasError('required')">
+                  Last Name is required
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="form-group row">
+              <mat-form-field
+                class="example-form-field col-sm-6"
+                [floatLabel]="'always'"
+              >
+                <mat-label>Email</mat-label>
+                <input
+                  matInput
+                  size="5"
+                  id="email"
+                  name="email"
+                  formControlName="email"
+                />
+                <mat-error
+                  *ngIf="
+                    formFields.email.hasError('email') &&
+                    !formFields.email.hasError('required')
+                  "
+                >
+                  Please enter a valid email address
+                </mat-error>
+                <mat-error
+                  *ngIf="formFields.email.hasError('required')"
+                >
+                  Email is required
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="form-group row">
+              <mat-form-field
+                class="example-form-field col-sm-6"
+                [floatLabel]="'always'"
+              >
+                <mat-label> More Information</mat-label>
+                <textarea
+                  matInput
+                  size="5"
+                  id="moreInfo"
+                  style="height: 70px"
+                  name="moreInfo"
+                  formControlName="moreInfo"
+                ></textarea>
+
+                <mat-error *ngIf="formFields.moreInfo.hasError('required')">
+                  More Info is required
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="form-group row">
+              <mat-form-field
+                class="example-form-field col-sm-6"
+                [floatLabel]="'always'"
+              >
+                <mat-label>Preferred Location</mat-label>
+                <mat-select formControlName="location">
+                  <mat-option
+                    *ngFor="let Location of Locations"
+                    [value]="Location"
+                    >{{ Location }}</mat-option
+                  >
+                </mat-select>
+
+                <mat-error
+                  *ngIf="formFields.location.hasError('required')"
+                >
+                  Please select a Location
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="form-group">
+              <mat-radio-group name="Gender" formControlName="gender">
+                <mat-radio-button value="male">Male</mat-radio-button>
+                <mat-radio-button value="female">Female</mat-radio-button>
+              </mat-radio-group>
+            </div>
+            <div class="form-group">
+              <mat-checkbox id="isActive" name="isActive"  formControlName="accept"
+                >I Agree to Terms and Conditions</mat-checkbox
+              >
+            </div> 
+
+            <br />
+            <button type="submit" mat-raised-button class="btnAction">
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br />
